@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/users');
-const thoughtRoutes = require('./routes/thoughts');
+const userRoutes = require('./routes/User.js');
+const thoughtRoutes = require('./routes/Thought.js');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,17 +14,17 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
-// Connect to MongoDB
+// Database connection
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost/social-network';
+
 mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }).then(() => {
-    console.log('MongoDB connected successfully');
-  }).catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
-  
-  // Start server
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected successfully'))
+.catch((err) => console.error('MongoDB connection error:', err));
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+  console.log(`Server running on port ${PORT}`);
+});

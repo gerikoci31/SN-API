@@ -1,8 +1,8 @@
 # SN-API
-# SN-API
 
 
-The E-commerce API provides RESTful endpoints for managing an e-commerce platform's categories, products, and tags. Built using Node.js, Express, and Sequelize, this API enables CRUD operations on categories, products, and tags, and supports many-to-many relationships between products and tags.
+
+The Social Network API provides RESTful endpoints for managing an e-commerce platform's categories, products, and tags. Built using Node.js, Express, and Sequelize, this API enables CRUD operations on categories, products, and tags, and supports many-to-many relationships between products and tags.
 
 ## Table of Contents
 
